@@ -1,0 +1,147 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://assets/sprites/tileset.png" type="Texture" id=1]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 24.4031, -25.1875, 24.4031, 24.2089, -24.9934, 24.2089, -25.3808, -25.1875 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 11.9926, -14.0075, 12.1941, 12.322, -13.898, 12.322, -13.7972, -13.8945 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( 24.8466, 24.0757, -25.4017, 24.0757, 24.204, -25.1445 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -24.6969, -24.6105, 25.4744, 24.9796, -25.4718, 24.9796 )
+
+[node name="boundary" type="Node2D"]
+
+[node name="brick_wall" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 0, 50, 50 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="brick_wall"]
+
+visibility/visible = false
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="brick_wall/StaticBody2D"]
+
+visibility/visible = false
+build_mode = 0
+polygon = Vector2Array( -25.3808, -25.1875, -24.9934, 24.2089, 24.4031, 24.2089, 24.4031, -25.1875 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="brick_floor" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 50, 0, 50, 50 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="brick_floor"]
+
+visibility/visible = false
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1.92286, 0, 0, 1.71423, 1.53673, 3.66734 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="brick_floor/StaticBody2D"]
+
+visibility/visible = false
+transform/pos = Vector2( 1.53673, 3.66734 )
+transform/scale = Vector2( 1.92286, 1.71423 )
+build_mode = 0
+polygon = Vector2Array( -13.7972, -13.8945, -13.898, 12.322, 12.1941, 12.322, 11.9926, -14.0075 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="brick_se_corner" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 101, 0, 50, 50 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="brick_se_corner"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="brick_se_corner/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( 24.204, -25.1445, -25.4017, 24.0757, 24.8466, 24.0757 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="brick_sw_corner" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 149, 0, 50, 50 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="brick_sw_corner"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="brick_sw_corner/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( -24.6969, -24.6105, 25.4744, 24.9796, -25.4718, 24.9796 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="brick_bg" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 200, 0, 50, 50 )
+
+
