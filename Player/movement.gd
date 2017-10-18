@@ -1,44 +1,52 @@
 extends KinematicBody2D
 
 const MAX_MOVE_SPEED = 5
-const MAX_VECTOR_LENGTH = 20
-const VECTOR_INCREMENT = .5
-var speed = 1
+const MOVE_GOAL = 10
+var vel_goal = Vector2(0,0)
+var vel = { 'x': 0, 'y': 0 }
+var print_counter = 0
 
 func _fixed_process(delta):
-	var move_direction = Vector2(0,0)
+	print_counter += 1
 	var dpad = { 
 	'left':Input.is_action_pressed("player_move_left"), 
 	'right':Input.is_action_pressed("player_move_right"),
 	'up':Input.is_action_pressed("player_move_up"),
 	'down':Input.is_action_pressed("player_move_down") 
 	}
-	var key_pressed = dpad['left'] || dpad['right'] || dpad['up'] || dpad['down']
-		
-	if dpad['left'] && move_direction.x > -MAX_VECTOR_LENGTH:
-		move_direction += Vector2(-1,0)
-	if dpad['right'] && move_direction.x < MAX_VECTOR_LENGTH:
-	    move_direction += Vector2(1,0)
-	if dpad['up'] && move_direction.y < MAX_VECTOR_LENGTH:
-	    move_direction += Vector2(0,-1)
-	if dpad['down'] && move_direction.y > -MAX_VECTOR_LENGTH:
-		move_direction += Vector2(0,1)
-	
-#	if(key_pressed):
-#		if speed < MAX_MOVE_SPEED: speed += .1
-#	else: 
-#		if speed > 0: speed -= .1
-#		else: move_direction = Vector2(0,0)
-	move(move_direction.normalized() * MAX_MOVE_SPEED)
-#	move_direction += inc_vector_towards_zero(move_direction)
+#	var key_pressed = dpad['left'] || dpad['right'] || dpad['up'] || dpad['down']
 
-func inc_vector_towards_zero(vector):
-	var result = Vector2(0,0)
-	if vector.x > 0: result += Vector2(-VECTOR_INCREMENT,0)
-	elif vector.x < 0: result += Vector2(VECTOR_INCREMENT,0)
-	elif vector.y > 0: result += Vector2(0,-VECTOR_INCREMENT)
-	elif vector.y < 0: result += Vector2(0,VECTOR_INCREMENT)
-	return result
+	if dpad['left']:
+	    vel_goal += Vector2(-1, 0)
+	elif dpad['right']:
+	    vel_goal += Vector2(1, 0)
+	else: vel_goal += Vector2(-vel_goal.x, 0)
+	if dpad['up']:
+	    vel_goal += Vector2(0, -1)
+	elif dpad['down']:
+	    vel_goal += Vector2(0, 1)
+	else: vel_goal += Vector2(0, -vel_goal.y)
+	update(delta)
+#	move(Vector2(vel['x'], vel['y']))
+
+func update(delta):
+	var new_pos = get_pos()
+	vel['x'] = approach(get_pos().x, get_pos().x + vel_goal.x, delta*100)
+	vel['y'] = approach(get_pos().y, get_pos().x + vel_goal.y, delta*100)
+#	print(vel['x'], " | ", vel['y'])
+	new_pos = Vector2(vel['x'], vel['y'])# * delta
+	if(print_counter % 60 == 0):
+		print("Current: ", get_pos(), "\nVel[x,y]: (", vel['x'], ", ", vel['y'], ")\nGoal: ", vel_goal)
+	if(get_viewport_rect().has_point(new_pos)):
+		set_pos(new_pos)
+
+func approach(current, goal, dt):
+	var difference = goal - current
+	if(difference > dt):
+		return current + dt
+	if(difference < -dt):
+		return current - dt
+	return goal
 
 func _ready():
 	set_fixed_process(true)
