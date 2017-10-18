@@ -1,11 +1,19 @@
-[gd_scene load_steps=3 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://Player/movement.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/FlyGuy.png" type="Texture" id=2]
 
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+
 [node name="Player" type="KinematicBody2D"]
 
 input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 6.40088, 0, 0, 6.13173, -0.0518208, -1.75834 )
+shapes/0/trigger = false
 collision/layers = 1
 collision/mask = 1
 collision/margin = 0.08
@@ -16,5 +24,13 @@ script/script = ExtResource( 1 )
 transform/pos = Vector2( 0.56366, -0.261078 )
 transform/scale = Vector2( 0.171068, 0.171068 )
 texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+transform/pos = Vector2( -0.0518208, -1.75834 )
+transform/scale = Vector2( 6.40088, 6.13173 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
 
 
