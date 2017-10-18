@@ -32,7 +32,7 @@ func _fixed_process(delta):
 func update(delta):
 	var new_pos = get_pos()
 	vel['x'] = approach(get_pos().x, get_pos().x + vel_goal.x, delta*100)
-	vel['y'] = approach(get_pos().y, get_pos().x + vel_goal.y, delta*100)
+	vel['y'] = approach(get_pos().y, get_pos().y + vel_goal.y, delta*100)
 #	print(vel['x'], " | ", vel['y'])
 	new_pos = Vector2(vel['x'], vel['y'])# * delta
 	if(print_counter % 60 == 0):
