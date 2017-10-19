@@ -6,4 +6,4 @@ func _ready():
 
 func _input(event):
 	if(event.type == InputEvent.KEY || event.type == InputEvent.MOUSE_BUTTON):
-		get_node("/root/globals").setScene("res://container.tscn")
+		get_node("/root/globals").goto_scene("res://container.tscn")
