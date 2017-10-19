@@ -17,4 +17,19 @@ texture = ExtResource( 1 )
 stretch_mode = 0
 script/script = ExtResource( 2 )
 
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 450.0
+margin/top = 560.0
+margin/right = 611.0
+margin/bottom = 574.0
+text = "Press any button to start!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 
