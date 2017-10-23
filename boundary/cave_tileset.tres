@@ -1,0 +1,77 @@
+[gd_resource type="TileSet" load_steps=5 format=1]
+
+[ext_resource path="res://assets/sprites/cave tiles.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -25.7583, 24.7277, 24.4853, -24.8878, 24.904, 25.1464 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -25.4443, -25.9345, 26.8928, 25.4604, -25.1302, 25.2511 )
+
+[resource]
+
+0/name = "cave_wall_1"
+0/texture = ExtResource( 1 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 50, 50 )
+0/occluder_offset = Vector2( 25, 25 )
+0/navigation_offset = Vector2( 25, 25 )
+0/shape_offset = Vector2( 25, 25 )
+0/shapes = [ SubResource( 1 ) ]
+0/one_way_collision_direction = Vector2( 0, 0 )
+0/one_way_collision_max_depth = 0.0
+1/name = "cave_wall_2"
+1/texture = ExtResource( 1 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 200, 0, 50, 50 )
+1/occluder_offset = Vector2( 25, 25 )
+1/navigation_offset = Vector2( 25, 25 )
+1/shape_offset = Vector2( 25, 25 )
+1/shapes = [ SubResource( 1 ) ]
+1/one_way_collision_direction = Vector2( 0, 0 )
+1/one_way_collision_max_depth = 0.0
+2/name = "cave_floor"
+2/texture = ExtResource( 1 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 50, 0, 50, 50 )
+2/occluder_offset = Vector2( 25, 25 )
+2/navigation_offset = Vector2( 25, 25 )
+2/shape_offset = Vector2( 25, 25 )
+2/shapes = [ SubResource( 1 ) ]
+2/one_way_collision_direction = Vector2( 0, 0 )
+2/one_way_collision_max_depth = 0.0
+3/name = "cave_ramp_l"
+3/texture = ExtResource( 1 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 103, 0, 50, 50 )
+3/occluder_offset = Vector2( 25, 25 )
+3/navigation_offset = Vector2( 25, 25 )
+3/shape_offset = Vector2( 25, 25 )
+3/shapes = [ SubResource( 2 ) ]
+3/one_way_collision_direction = Vector2( 0, 0 )
+3/one_way_collision_max_depth = 0.0
+4/name = "cave_ramp_r"
+4/texture = ExtResource( 1 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 149, 0, 50, 50 )
+4/occluder_offset = Vector2( 25, 25 )
+4/navigation_offset = Vector2( 25, 25 )
+4/shape_offset = Vector2( 25, 25 )
+4/shapes = [ SubResource( 3 ) ]
+4/one_way_collision_direction = Vector2( 0, 0 )
+4/one_way_collision_max_depth = 0.0
+

@@ -1,0 +1,160 @@
+[gd_scene load_steps=5 format=1]
+
+[ext_resource path="res://assets/sprites/cave tiles.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -25.7583, 24.7277, 24.4853, -24.8878, 24.904, 25.1464 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+
+custom_solver_bias = 0.0
+points = Vector2Array( -25.4443, -25.9345, 26.8928, 25.4604, -25.1302, 25.2511 )
+
+[node name="Node2D" type="Node2D"]
+
+[node name="cave_wall_1" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 0, 0, 50, 50 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cave_wall_1"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 2.47981, 0, 0, 2.47981, -0.022522, -0.0821514 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cave_wall_1/StaticBody2D"]
+
+transform/pos = Vector2( -0.022522, -0.0821514 )
+transform/scale = Vector2( 2.47981, 2.47981 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="cave_wall_2" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 200, 0, 50, 50 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cave_wall_2"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 2.47176, 0, 0, 2.47176, 0.186827, 0.231869 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cave_wall_2/StaticBody2D"]
+
+transform/pos = Vector2( 0.186827, 0.231869 )
+transform/scale = Vector2( 2.47176, 2.47176 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="cave_floor" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 50, 0, 50, 50 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cave_floor"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 2.50799, 0, 0, 2.50799, 0.02981, 0.0748577 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cave_floor/StaticBody2D"]
+
+transform/pos = Vector2( 0.02981, 0.0748577 )
+transform/scale = Vector2( 2.50799, 2.50799 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="cave_ramp_l" type="Sprite" parent="."]
+
+visibility/visible = false
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 103, 0, 50, 50 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cave_ramp_l"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="cave_ramp_l/StaticBody2D"]
+
+build_mode = 0
+polygon = Vector2Array( -25.7583, 24.7277, 24.4853, -24.8878, 24.904, 25.1464 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+[node name="cave_ramp_r" type="Sprite" parent="."]
+
+texture = ExtResource( 1 )
+region = true
+region_rect = Rect2( 149, 0, 50, 50 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="cave_ramp_r"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0.314026, -0.628044 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="cave_ramp_r/StaticBody2D"]
+
+transform/pos = Vector2( 0.314026, -0.628044 )
+build_mode = 0
+polygon = Vector2Array( -25.4443, -25.9345, 26.8928, 25.4604, -25.1302, 25.2511 )
+shape_range = Vector2( 0, 0 )
+trigger = false
+
+
