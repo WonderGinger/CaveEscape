@@ -52,7 +52,8 @@ tile_data = IntArray( -196612, 1, -196611, 1, -196610, 1, -196609, 1, -262144, 1
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
-transform/scale = Vector2( 0.2, 0.2 )
+transform/pos = Vector2( 24.9716, 40.8516 )
+transform/scale = Vector2( 0.136476, 0.136476 )
 
 [node name="moveToArea" type="Area2D" parent="."]
 
