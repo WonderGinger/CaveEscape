@@ -2,6 +2,7 @@ extends Node
 
 var current_scene = null
 var cave_1 = "res://level_1/cave_1.tscn"
+var cave_2 = "res://level_2/cave_2.tscn"
 var puzzle_1 = "res://level_1/puzzle_1.tscn"
 var title_screen = "res://title_screen.tscn"
 

@@ -5,4 +5,5 @@ extends Area2D
 
 #When the player reaches the first area, they are moved to cave_1.
 func _on_moveToArea_body_enter( body ):
-	get_node("/root/globals").goto_scene(globals.cave_2)
+	get_node("/root/globals").goto_scene(globals.title_screen)
+	
