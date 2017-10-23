@@ -1,6 +1,9 @@
 extends Node
 
 var current_scene = null
+var cave_1 = "res://level_1/cave_1.tscn"
+var puzzle_1 = "res://level_1/puzzle_1.tscn"
+var title_screen = "res://title_screen.tscn"
 
 func _ready():
 	var root = get_tree().get_root()
@@ -27,7 +30,7 @@ func _deferred_goto_scene(path):
     current_scene.free()
 
     # Load new scene
-    var s = ResourceLoader.load(path)
+    var s = load(path)
 
     # Instance the new scene
     current_scene = s.instance()
@@ -36,4 +39,4 @@ func _deferred_goto_scene(path):
     get_tree().get_root().add_child(current_scene)
 
     # optional, to make it compatible with the SceneTree.change_scene() API
-    get_tree().set_current_scene( current_scene )
+    get_tree().set_current_scene(current_scene)

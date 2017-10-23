@@ -1,9 +1,8 @@
 extends KinematicBody2D
 
 const MAX_MOVE_SPEED = 5
-const MAX_VECTOR_LENGTH = 20
-const VECTOR_INCREMENT = .5
-var speed = 1
+onready var ghost = get_node("ghost")
+var facing_down = true
 
 func _fixed_process(delta):
 	var move_direction = Vector2(0,0)
@@ -14,31 +13,25 @@ func _fixed_process(delta):
 	'down':Input.is_action_pressed("player_move_down") 
 	}
 	var key_pressed = dpad['left'] || dpad['right'] || dpad['up'] || dpad['down']
-		
-	if dpad['left'] && move_direction.x > -MAX_VECTOR_LENGTH:
-		move_direction += Vector2(-1,0)
-	if dpad['right'] && move_direction.x < MAX_VECTOR_LENGTH:
-	    move_direction += Vector2(1,0)
-	if dpad['up'] && move_direction.y < MAX_VECTOR_LENGTH:
-	    move_direction += Vector2(0,-1)
-	if dpad['down'] && move_direction.y > -MAX_VECTOR_LENGTH:
-		move_direction += Vector2(0,1)
-	
-#	if(key_pressed):
-#		if speed < MAX_MOVE_SPEED: speed += .1
-#	else: 
-#		if speed > 0: speed -= .1
-#		else: move_direction = Vector2(0,0)
-	move(move_direction.normalized() * MAX_MOVE_SPEED)
-#	move_direction += inc_vector_towards_zero(move_direction)
 
-func inc_vector_towards_zero(vector):
-	var result = Vector2(0,0)
-	if vector.x > 0: result += Vector2(-VECTOR_INCREMENT,0)
-	elif vector.x < 0: result += Vector2(VECTOR_INCREMENT,0)
-	elif vector.y > 0: result += Vector2(0,-VECTOR_INCREMENT)
-	elif vector.y < 0: result += Vector2(0,VECTOR_INCREMENT)
-	return result
+	if dpad['left']:
+		ghost.set_animation("move_left")
+		move_direction += Vector2(-1,0)
+	if dpad['right']:
+		ghost.set_animation("move_right")
+		move_direction += Vector2(1,0)
+	if dpad['up']:
+		facing_down = false
+		ghost.set_animation("move_up")
+		move_direction += Vector2(0,-1)
+	if dpad['down']:
+		facing_down = true
+		ghost.set_animation("move_down")
+		move_direction += Vector2(0,1)
+	if(!key_pressed):
+		if(facing_down): ghost.set_animation("default")
+		else: ghost.set_animation("idle_back")
+	move(move_direction.normalized() * MAX_MOVE_SPEED)
 
 func _ready():
 	set_fixed_process(true)
