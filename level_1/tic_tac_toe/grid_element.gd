@@ -9,15 +9,18 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_pressed("player_interact") && can_place_piece(player, self): 
-		get_node("piece").set_animation("O_piece")
+		get_node("piece").set_animation("X_piece")
+		get_parent().player_turn(self)
 		placeable = false
 
 func can_place_piece(char, item):
-  # char and item are Nodes
 	if char:
-		if char.get_global_pos().distance_to(item.get_global_pos()) <= 20:
+		if char.get_global_pos().distance_to(item.get_global_pos()) <= 40:
 			return placeable
 	return false
+
+func ai_move():
+	get_node("piece").set_animation("O_piece")
 
 func on_body_enter( body ):
 	player = body
