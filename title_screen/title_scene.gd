@@ -1,6 +1,7 @@
 extends TextureFrame
 
-var can_start = false
+var allow_start = false
+onready var animation = get_node("title_text/Animation")
 
 func _ready():
 	set_process_input(true)
@@ -12,8 +13,9 @@ func _ready():
 	t.start()
 
 func _input(event):
-	if(can_start && event.type == InputEvent.KEY || event.type == InputEvent.MOUSE_BUTTON):
+	if(allow_start && event.type == InputEvent.KEY || event.type == InputEvent.MOUSE_BUTTON):
 		get_node("/root/globals").goto_scene(globals.cave_1)
 
 func _on_timeout_complete():
-	can_start = true
+	allow_start = true
+	animation.play("OpacityAnimation")
