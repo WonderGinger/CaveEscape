@@ -14,7 +14,7 @@ func _process(delta):
 
 func can_place_piece(char, item):
   # char and item are Nodes
-  if char.get_global_pos().distance_to(item.get_global_pos()) <= 5:
+  if char.get_global_pos().distance_to(item.get_global_pos()) <= 20:
     return placeable
   return false
 

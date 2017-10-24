@@ -11,9 +11,9 @@ extents = Vector2( 10, 10 )
 
 [node name="puzzle_1" type="Node"]
 
-[node name="NW" parent="." instance=ExtResource( 1 )]
+[node name="M" parent="." instance=ExtResource( 1 )]
 
-transform/pos = Vector2( 490, 440 )
+transform/pos = Vector2( 480, 230 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
@@ -41,10 +41,8 @@ shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
 
-[connection signal="body_enter" from="NW" to="NW" method="_on_NW_body_enter"]
-
 [connection signal="body_enter" from="moveToArea" to="moveToArea" method="_on_moveToArea_body_enter"]
 
 
-[editable path="NW"]
+[editable path="M"]
 [editable path="Player"]
