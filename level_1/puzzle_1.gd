@@ -25,7 +25,9 @@ func player_move(element):
 		if element == tiles[i] && movecount < 9:
 			if(!place(i, 1)):
 				ai_turn()
-			else: get_node("/root/globals").goto_scene(globals.cave_2)
+			else: 
+				get_node("/root/globals").goto_scene(globals.cave_1)
+				globals.puzzle_1_complete = true
 			break
 
 func ai_turn():

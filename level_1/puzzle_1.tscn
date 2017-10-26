@@ -10,6 +10,34 @@
 
 script/script = ExtResource( 1 )
 
+[node name="Hint" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="Label" type="Label" parent="Hint"]
+
+anchor/left = 3
+anchor/top = 1
+anchor/right = 3
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 190.0
+margin/top = 20.0
+margin/right = -230.0
+margin/bottom = 6.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Hint: press spacebar while on top of a square to make your move!"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
 [node name="Board" type="TextureFrame" parent="."]
 
 focus/ignore_mouse = true
@@ -78,40 +106,9 @@ transform/pos = Vector2( 400, 600 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 
-transform/pos = Vector2( 140, 620 )
+editor/display_folded = true
+transform/pos = Vector2( 160, 430 )
 transform/scale = Vector2( 0.3, 0.3 )
-
-[node name="Camera2D" parent="Player"]
-
-visibility/visible = true
-
-[node name="Hint" type="CanvasLayer" parent="."]
-
-layer = 1
-offset = Vector2( 0, 0 )
-rotation = 0.0
-scale = Vector2( 1, 1 )
-
-[node name="Label" type="Label" parent="Hint"]
-
-anchor/left = 3
-anchor/top = 1
-anchor/right = 3
-anchor/bottom = 1
-rect/scale = Vector2( 0.8, 0.8 )
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 0
-margin/left = 140.0
-margin/top = 20.0
-margin/right = -280.0
-margin/bottom = 6.0
-text = "Hint: press spacebar while on top of a square to make your move!"
-align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
 
 [editable path="N"]

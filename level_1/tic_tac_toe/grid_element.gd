@@ -1,7 +1,6 @@
 extends Area2D
 
 var placeable = true
-var player = null
 var body_inside = false
 var position = [0,0]
 
@@ -11,7 +10,7 @@ func _ready():
 	connect("body_exit", self, "on_body_exit")
 
 func _process(delta):
-	if Input.is_action_pressed("player_interact") && can_place_piece(): #can_place_piece(player, self): 
+	if Input.is_action_pressed("player_interact") && can_place_piece():
 		player_move()
 
 func can_place_piece():
@@ -29,11 +28,10 @@ func ai_move():
 	placeable = false
 
 func on_body_enter( body ):
-	player = body
 	body_inside = placeable
 
 func on_body_exit(body):
 	body_inside = false
 
 func _on_Area2D_body_enter(body):
-	player = body
+	body_inside = placeable

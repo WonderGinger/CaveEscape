@@ -4,6 +4,7 @@ var current_scene = null
 var cave_1 = "res://level_1/cave_1.tscn"
 var cave_2 = "res://level_2/cave_2.tscn"
 var puzzle_1 = "res://level_1/puzzle_1.tscn"
+var puzzle_1_complete = false
 var title_screen = "res://title_screen/title_screen.tscn"
 
 func _ready():
@@ -11,16 +12,6 @@ func _ready():
 	current_scene = root.get_child( root.get_child_count() -1 )
 
 func goto_scene(path):
-
-    # This function will usually be called from a signal callback,
-    # or some other function from the running scene.
-    # Deleting the current scene at this point might be
-    # a bad idea, because it may be inside of a callback or function of it.
-    # The worst case will be a crash or unexpected behavior.
-
-    # The way around this is deferring the load to a later time, when
-    # it is ensured that no code from the current scene is running:
-
     call_deferred("_deferred_goto_scene",path)
 
 

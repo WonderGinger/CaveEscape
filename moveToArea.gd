@@ -2,9 +2,10 @@ extends Area2D
 
 #You can set this variable by clicking on moveToArea under Inspector.
 export var sceneToMove = ""
-
+func _ready():
+	connect("body_enter", self, "on_body_enter")
 #When the player reaches the first area, they are moved to puzzle_1
-func _on_moveToArea_body_enter( body ):
+func on_body_enter( body ):
 	var path = ""
 	if(sceneToMove != ""): path = sceneToMove
 	else: path = globals.title_screen

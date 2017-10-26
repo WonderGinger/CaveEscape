@@ -1,8 +1,16 @@
-extends Area2D
+extends Node
 
-#You can set this variable by clicking on moveToArea under Inspector.
-#export var sceneToMove = ""
+var open_door = true
+onready var old_collision_mask = get_node("move_cave_1").get_collision_mask()
+onready var old_layer_mask = get_node("move_cave_1").get_layer_mask()
+func _ready():
+	set_fixed_process(true)
+	get_node("move_cave_1").set_collision_mask(0)
+	get_node("move_cave_1").set_layer_mask(0)
 
-#When the player reaches the first area, they are moved to cave_1.
-func _on_moveToArea_body_enter( body ):
-	get_node("/root/globals").goto_scene(globals.puzzle_1)
+func _fixed_process(delta):
+	if globals.puzzle_1_complete && open_door: 
+		get_node("Door").set_animation("door_open")
+		open_door = false
+		get_node("move_cave_1").set_collision_mask(old_collision_mask)
+		get_node("move_cave_1").set_layer_mask(old_layer_mask)
