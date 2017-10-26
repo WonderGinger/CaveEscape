@@ -16,6 +16,10 @@ func _ready():
 		for y in range(3):
 			board[x].append(0)
 
+func _process(delta):
+	if Input.is_action_pressed("player_interact"):
+		get_node("Hint/Label").hide()
+
 func player_move(element):
 	for i in range(9):
 		if element == tiles[i] && movecount < 9:
