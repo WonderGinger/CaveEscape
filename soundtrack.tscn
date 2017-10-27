@@ -28,7 +28,7 @@ stream/paused = false
 stream/loop_restart_time = 0.0
 stream/buffering_ms = 500
 
-[node name="StreamPlayer 2" type="StreamPlayer" parent="."]
+[node name="spooky_wind" type="StreamPlayer" parent="."]
 
 stream/stream = ExtResource( 3 )
 stream/play = false
