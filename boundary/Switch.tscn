@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://assets/sprites/switch off.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprites/switch on.png" type="Texture" id=2]
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "switch_on",
+"speed": 5.0
+} ]
+
+[node name="Switch" type="AnimatedSprite"]
+
+transform/pos = Vector2( 875.025, 474.528 )
+transform/scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 2 )
+animation = "default"
+
+

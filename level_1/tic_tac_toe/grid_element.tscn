@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://level_1/tic_tac_toe/grid_element.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprites/tictactoe X.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprites/Tictactoe O.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/Tictactoe O.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/tictactoe X.png" type="Texture" id=3]
 
-[sub_resource type="ConvexPolygonShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=1]
 
 custom_solver_bias = 0.0
 points = Vector2Array( -19.5489, -15.6391, 19.5489, -15.6391, 19.5489, 17.594, -19.5489, 17.594 )
@@ -19,19 +19,19 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "X_piece",
+"name": "O_piece",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "O_piece",
+"name": "X_piece",
 "speed": 5.0
 } ]
 
 [node name="Area2D" type="Area2D"]
 
 input/pickable = true
-shapes/0/shape = SubResource( 3 )
+shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 5.11538, 0, 0, 5.11538, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )

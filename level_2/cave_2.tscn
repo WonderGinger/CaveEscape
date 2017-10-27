@@ -3,14 +3,7 @@
 [ext_resource path="res://boundary/cave_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://level_2/cave_2.gd" type="Script" id=3]
-
-[sub_resource type="ImageTexture" id=1]
-
-flags = 7
-image = Image()
-size = Vector2( 0, 0 )
-storage = 0
-lossy_quality = 0.7
+[ext_resource path="res://boundary/Switch.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -19,24 +12,11 @@ extents = Vector2( 29.604, 24.3017 )
 
 [node name="cave_2" type="Node"]
 
-[node name="TextureFrame" type="TextureFrame" parent="."]
-
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-margin/left = -3620.0
-margin/top = -790.0
-margin/right = -1440.0
-margin/bottom = 1252.0
-texture = SubResource( 1 )
-stretch_mode = 0
-
 [node name="Cave 2" type="TileMap" parent="."]
 
 mode = 0
 tile_set = ExtResource( 1 )
-cell/size = Vector2( 50, 50 )
+cell/size = Vector2( 49, 49 )
 cell/quadrant_size = 16
 cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 cell/half_offset = 2
@@ -52,16 +32,18 @@ tile_data = IntArray( -196612, 1, -196611, 1, -196610, 1, -196609, 1, -262144, 1
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 
+editor/display_folded = true
 transform/pos = Vector2( 24.9716, 40.8516 )
 transform/scale = Vector2( 0.136476, 0.136476 )
 
 [node name="moveToArea" type="Area2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( -1786.61, 695.787 )
 transform/scale = Vector2( -2.11889, 1.41538 )
 input/pickable = true
 shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 0.396884, 0, 0, 0.317013, -1420.5, 187.71 )
+shapes/0/transform = Matrix32( 0.396884, 0, 0, 0.317013, -1406.71, 180.472 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -71,11 +53,16 @@ script/script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="moveToArea"]
 
-transform/pos = Vector2( -1420.5, 187.71 )
+transform/pos = Vector2( -1406.71, 180.472 )
 transform/scale = Vector2( 0.396884, 0.317013 )
 shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
+
+[node name="Switch" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1200.13, 940.532 )
+transform/scale = Vector2( 0.378921, 0.378921 )
 
 [connection signal="body_enter" from="moveToArea" to="moveToArea" method="_on_moveToArea_body_enter"]
 

@@ -83,7 +83,7 @@ transform/pos = Vector2( 910, 370 )
 
 [node name="S" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 650, 600 )
+transform/pos = Vector2( 650, 590 )
 
 [node name="W" parent="." instance=ExtResource( 4 )]
 
@@ -100,11 +100,11 @@ transform/pos = Vector2( 400, 140 )
 
 [node name="SE" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 910, 600 )
+transform/pos = Vector2( 910, 590 )
 
 [node name="SW" parent="." instance=ExtResource( 4 )]
 
-transform/pos = Vector2( 400, 600 )
+transform/pos = Vector2( 400, 590 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 

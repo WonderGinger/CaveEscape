@@ -11,14 +11,21 @@ var movecount = 0
 
 func _ready():
 	set_process(true)
-	for x in range(3):
-		board.append([])
-		for y in range(3):
-			board[x].append(0)
+	reset_board()
 
 func _process(delta):
 	if Input.is_action_pressed("player_interact"):
 		get_node("Hint/Label").hide()
+
+func reset_board():
+	board = []
+	for x in range(3):
+		board.append([])
+		for y in range(3):
+			board[x].append(0)
+	for node in tiles:
+		node.placeable = true
+		node.set_animation("default")
 
 func player_move(element):
 	for i in range(9):
@@ -36,7 +43,8 @@ func ai_turn():
 		var rand_index = randi()%9
 		if tiles[rand_index].placeable:
 			tiles[rand_index].ai_move()
-			place(rand_index, -1)
+			if place(rand_index, -1):
+				reset_board()
 			break
 
 # state should be passed 1 for X, -1 for O, returns whether 

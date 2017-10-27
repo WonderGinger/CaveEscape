@@ -88,8 +88,8 @@ animation = "default"
 [node name="move_cave_1" parent="." instance=ExtResource( 6 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 182.029, 57.1004 )
-transform/scale = Vector2( 0.7, 0.1 )
+transform/pos = Vector2( 179.456, 51.3997 )
+transform/scale = Vector2( 0.683695, 0.0155334 )
 sceneToMove = "res://level_2/cave_2.tscn"
 
 [node name="move_puzzle_1" parent="." instance=ExtResource( 6 )]

@@ -19,13 +19,19 @@ func can_place_piece():
 	return false
 
 func player_move():
-		get_node("piece").set_animation("X_piece")
+		set_animation("X")
 		placeable = false
 		get_parent().player_move(self)
 
 func ai_move():
-	get_node("piece").set_animation("O_piece")
+	set_animation("O")
 	placeable = false
+
+func set_animation(type):
+	if type == "default": 
+		get_node("piece").set_animation(type)
+	else: 
+		get_node("piece").set_animation(type+"_piece")
 
 func on_body_enter( body ):
 	body_inside = placeable
